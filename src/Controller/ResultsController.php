@@ -101,6 +101,8 @@ class ResultsController extends AbstractController
                 ->setRaceTime($raceTime);
             
             $entityManager->flush();
+
+            return $this->redirectToRoute('app_results');
         }
 
         return $this->renderForm('results/edit.html.twig', [
