@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ResultsController!{% endblock %}
+
+{% block body %}
+<div class="container">
+<section class="container-md">
+<a class="btn btn-secondary mt-4" href="{{ path('csv_upload') }}">Add New Race</a>
+
+<h3 class="mt-3">Medium distance</h3>
+<p>Avarage: {{ mediumAvarage }}</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Full name</th>
+      <th scope="col">Finish time</th>
+      <th scope="col">Placement</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+   {% for mediumResult in mediumDistanceResults %}
+        <tr>
+          <th scope="row">{{ mediumResult.fullName }}</th>
+          <td>{{ mediumResult.raceTime|date('h:i:s') }}</td>
+          <td>{{ mediumResult.placement }}</td>
+          <td>
+          <a class="btn btn-primary" href="{{ path('edit_result', {'id': mediumResult.id }) }}">Edit</a>
+          </td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</section>
+
+<section class="container-md">
+<h3 class="mt-3">Long distance</h3>
+<p>Avarage: {{ longAvarage }}</p>
+<table class="table">
+  <thead>
+    <tr>
+     <th scope="col">Full name</th>
+      <th scope="col">Finish time</th>
+      <th scope="col">Placement</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for longResult in longDistanceResults %}
+        <tr>
+          <th scope="row">{{ longResult.fullName }}</th>
+          <td>{{ longResult.raceTime|date('h:m:s') }}</td>
+          <td>{{ longResult.placement }}</td>
+          <td>
+            <a class="btn btn-primary" href="{{ path('edit_result', {'id': longResult.id }) }}">Edit</a>
+           </td>
+        </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</section>
+</div>
+{% endblock %}
