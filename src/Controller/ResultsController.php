@@ -26,12 +26,12 @@ class ResultsController extends AbstractController
 
         $mediumDistanceResults = $repository->findBy(
             array('distance' => 'medium'), 
-            array('raceTime' => 'ASC')
+            array('placement' => 'ASC')
         );
 
         $longDistanceResults = $repository->findBy( 
             array('distance' => 'long'), 
-            array('raceTime' => 'ASC')
+            array('placement' => 'ASC')
         );
 
         $mediumAvarage = [];
