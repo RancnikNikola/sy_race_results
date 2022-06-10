@@ -95,6 +95,7 @@ class CsvUploadController extends AbstractController
                 $entityManager->persist($results);
                 $entityManager->flush();
 
+                return $this->redirectToRoute('app_results');
             }
 
             fclose($handle);
